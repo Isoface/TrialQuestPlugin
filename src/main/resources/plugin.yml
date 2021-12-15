@@ -1,0 +1,10 @@
+name: Quest
+version: '${project.version}'
+main: es.outlook.adriansr.quest.main.QuestPlugin
+api-version: 1.18
+authors: [ AdrianSR ]
+description: Quest plugin
+commands:
+  quest:
+    usage: '/quest <player> <quest>'
+    description: 'start a quest'
