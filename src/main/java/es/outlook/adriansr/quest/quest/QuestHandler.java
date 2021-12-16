@@ -112,9 +112,4 @@ public final class QuestHandler extends PluginHandler {
 			}
 		}
 	}
-	
-	@Override
-	protected boolean isAllowMultipleInstances ( ) {
-		return false;
-	}
 }

@@ -1,5 +1,7 @@
 package es.outlook.adriansr.quest.main;
 
+import es.outlook.adriansr.quest.data.DataStorage;
+import es.outlook.adriansr.quest.data.DataStorageHandler;
 import es.outlook.adriansr.quest.enums.EnumPluginHandler;
 import es.outlook.adriansr.quest.quest.Quest;
 import es.outlook.adriansr.quest.quest.QuestHandler;
@@ -44,6 +46,16 @@ public final class QuestPlugin extends JavaPlugin {
 		// test quest command
 		Objects.requireNonNull ( getCommand ( "quest" ) ).setExecutor ( this );
 		Objects.requireNonNull ( getCommand ( "quest" ) ).setTabCompleter ( this );
+	}
+	
+	@Override
+	public void onDisable ( ) {
+		// disposing database connection
+		DataStorage connection = DataStorageHandler.getInstance ( ).getDataStorage ( );
+		
+		if ( connection != null ) {
+			connection.dispose ( );
+		}
 	}
 	
 	@Override

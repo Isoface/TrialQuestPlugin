@@ -1,9 +1,9 @@
 package es.outlook.adriansr.quest.handler;
 
+import es.outlook.adriansr.quest.main.QuestPlugin;
 import org.bukkit.Bukkit;
 import org.bukkit.event.HandlerList;
 import org.bukkit.event.Listener;
-import org.bukkit.plugin.Plugin;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -19,16 +19,16 @@ public abstract class PluginHandler implements Listener {
 		return clazz.cast ( INSTANCES.get ( clazz ) );
 	}
 	
-	/** the handling plugin */
-	protected final Plugin plugin;
+	// handling plugin instance
+	protected final QuestPlugin plugin;
 	
 	/**
 	 * Constructs the plugin handler.
 	 *
 	 * @param plugin the plugin to handle.
 	 */
-	protected PluginHandler ( Plugin plugin ) {
-		if ( !isAllowMultipleInstances ( ) && INSTANCES.containsKey ( getClass ( ) ) ) {
+	protected PluginHandler ( QuestPlugin plugin ) {
+		if ( INSTANCES.containsKey ( getClass ( ) ) ) {
 			throw new IllegalStateException ( "cannot create more than one instance of this handler!" );
 		}
 		
@@ -41,19 +41,9 @@ public abstract class PluginHandler implements Listener {
 	 * <p>
 	 * @return the handling plugin.
 	 */
-	public Plugin getPlugin ( ) {
+	public QuestPlugin getPlugin ( ) {
 		return plugin;
 	}
-	
-	/**
-	 * Gets whether this handler allows the creation of more than one instance of
-	 * it.
-	 * <p>
-	 * This is useful to avoid users to create instances of this handler.
-	 * <p>
-	 * @return true to allow more than one instance.
-	 */
-	protected abstract boolean isAllowMultipleInstances ( );
 	
 	/**
 	 * Registers events in this class.

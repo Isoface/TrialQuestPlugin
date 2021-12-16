@@ -8,3 +8,5 @@ commands:
   quest:
     usage: '/quest <player> <quest>'
     description: 'start a quest'
+libraries:
+  - 'org.mongodb:mongodb-driver-sync:4.2.1'

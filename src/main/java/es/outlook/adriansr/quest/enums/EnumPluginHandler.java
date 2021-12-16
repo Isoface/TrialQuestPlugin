@@ -1,5 +1,7 @@
 package es.outlook.adriansr.quest.enums;
 
+import es.outlook.adriansr.quest.configuration.MainConfigurationHandler;
+import es.outlook.adriansr.quest.data.DataStorageHandler;
 import es.outlook.adriansr.quest.handler.PluginHandler;
 import es.outlook.adriansr.quest.quest.QuestHandler;
 import es.outlook.adriansr.quest.quest.instance.QuestInstanceHandler;
@@ -14,6 +16,8 @@ public enum EnumPluginHandler {
 	
 	// order is vital
 	
+	MAIN_CONFIGURATION_HANDLER ( MainConfigurationHandler.class ),
+	DATA_STORAGE_HANDLER ( DataStorageHandler.class ),
 	QUEST_TYPE_HANDLER ( QuestTypeHandler.class ),
 	QUEST_INSTANCE_HANDLER ( QuestInstanceHandler.class ),
 	QUEST_HANDLER ( QuestHandler.class ),

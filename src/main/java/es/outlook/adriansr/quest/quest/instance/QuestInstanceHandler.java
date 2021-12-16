@@ -90,9 +90,4 @@ public final class QuestInstanceHandler extends PluginHandler {
 			cancelQuest ( instance );
 		}
 	}
-	
-	@Override
-	protected boolean isAllowMultipleInstances ( ) {
-		return false;
-	}
 }

@@ -10,6 +10,7 @@ import java.io.IOException;
  */
 public enum EnumFile {
 	
+	MAIN_CONFIGURATION_FILE ( "Configuration.yml" ) ,
 	QUEST_TYPE_CONFIGURATION_FILE ( "QuestTypeConfiguration.yml" ),
 	QUEST_CONFIGURATION_FILE ( "QuestConfiguration.yml" ),
 	

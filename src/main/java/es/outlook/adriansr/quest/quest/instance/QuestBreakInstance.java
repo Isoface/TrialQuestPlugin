@@ -1,5 +1,8 @@
 package es.outlook.adriansr.quest.quest.instance;
 
+import es.outlook.adriansr.quest.data.DataStorage;
+import es.outlook.adriansr.quest.data.DataStorageHandler;
+import es.outlook.adriansr.quest.enums.EnumStat;
 import es.outlook.adriansr.quest.quest.Quest;
 import es.outlook.adriansr.quest.quest.type.QuestType;
 import es.outlook.adriansr.quest.util.StringUtil;
@@ -33,6 +36,20 @@ public class QuestBreakInstance extends QuestInstance {
 	protected void finish ( ) {
 		super.finish ( );
 		unregister ( );
+		
+		// updating stats
+		DataStorage database = DataStorageHandler.getInstance ( ).getDataStorage ( );
+		
+		if ( database != null ) {
+			try {
+				database.setStatValue (
+						player , EnumStat.BROKEN_BLOCKS ,
+						count + database.getStatValue (
+								player.getUniqueId ( ) , EnumStat.BROKEN_BLOCKS ) );
+			} catch ( Exception e ) {
+				e.printStackTrace ( );
+			}
+		}
 	}
 	
 	@Override

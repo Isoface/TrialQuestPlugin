@@ -1,5 +1,8 @@
 package es.outlook.adriansr.quest.quest.instance;
 
+import es.outlook.adriansr.quest.data.DataStorage;
+import es.outlook.adriansr.quest.data.DataStorageHandler;
+import es.outlook.adriansr.quest.enums.EnumStat;
 import es.outlook.adriansr.quest.quest.Quest;
 import es.outlook.adriansr.quest.quest.type.QuestType;
 import es.outlook.adriansr.quest.util.StringUtil;
@@ -37,6 +40,20 @@ public class QuestWalkInstance extends QuestInstance {
 	protected void finish ( ) {
 		super.finish ( );
 		unregister ( );
+		
+		// updating stats
+		DataStorage database = DataStorageHandler.getInstance ( ).getDataStorage ( );
+		
+		if ( database != null ) {
+			try {
+				int updated = configuration.getAmount ( ) + database.getStatValue (
+						player.getUniqueId ( ) , EnumStat.WALKED_BLOCKS );
+				
+				database.setStatValue ( player , EnumStat.WALKED_BLOCKS , updated );
+			} catch ( Exception e ) {
+				e.printStackTrace ( );
+			}
+		}
 	}
 	
 	@Override
